@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v1 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="../static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="../static/wp-content/style.css">
+	</head>
+
+	<body>
+		<div class="wrapper" style="background-image: url('../static/images/bg-registration-form-1.jpg');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="../static/images/registration-form-1.jpg" alt="">
+				</div>
+				<form id="loginForm" action="http://127.0.0.1:5000/login" method="post" class="login-form">
+					<h3>Login Form</h3>
+					<!-- {% if registration_success %}
+                    	User: {{ username }} registered successfully! 
+            		{% endif %} -->
+					{% with messages = get_flashed_messages() %}
+            			{% if messages %}
+            				{% for message in messages %}
+            					<p class="error-message">{{ message }}</p> <!-- Display flashed error message -->
+            				{% endfor %}
+            			{% endif %}
+            		{% endwith %}
+					<br>
+					<div class="form-wrapper">
+						<input name="username" type="text" placeholder="Username" class="form-control">
+						<i class="zmdi zmdi-account"></i>
+					</div>
+					<div class="form-wrapper">
+						<input name="password" type="password" placeholder="Password" class="form-control">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+                    <div class="form-wrapper">
+                        <a href="./register">Not Register</a>
+						<a href="./admin/login" style="margin-left: 150px;">Is Admin</a>
+					</div>
+					<button name="login">Login
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

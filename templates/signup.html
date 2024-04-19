@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RegistrationForm_v1 by Colorlib</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="../static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="../static/wp-content/style.css">
+</head>
+
+<body>
+<div class="wrapper" style="background-image: url('../static/images/bg-registration-form-1.jpg');">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="../static/images/registration-form-1.jpg" alt="">
+        </div>
+
+        <form id="registrationForm" action="http://127.0.0.1:5000/register" method="post" class="login-form" novalidate>
+            <h3>Registration Form</h3>
+            {% if user_exists %}
+                {{ email }} already exists, please login! <!-- Display username here -->
+            {% endif %}
+            <div class="form-group">
+                <input name="firstname" type="text" placeholder="First Name" class="form-control" required>
+                <input name="lastname" type="text" placeholder="Last Name" class="form-control" required>
+            </div>
+            <div class="form-wrapper">
+                <input name="username" type="text" placeholder="Username" class="form-control" required>
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="form-wrapper">
+                <input name="email" type="email" placeholder="Email" class="form-control" required>
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="form-wrapper">
+                <input name="address" type="text" placeholder="Address" class="form-control" required>
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="form-wrapper">
+                <input name="password" type="password" placeholder="Password" class="form-control" required minlength="6">
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+            <div class="form-wrapper">
+                <input name="confirmpassword" type="password" placeholder="Confirm Password" class="form-control" required minlength="6">
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+
+            <button type="submit" name="    ">Register
+                <i class="zmdi zmdi-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // JavaScript to customize error messages
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.addEventListener('invalid', () => {
+            input.setCustomValidity('');
+            if (!input.validity.valid) {
+                if (input.name === 'password') {
+                    input.setCustomValidity('Password must be at least 6 characters long');
+                } else {
+                    input.setCustomValidity(`${input.placeholder} is required`);
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
